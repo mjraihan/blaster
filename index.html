@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blast Undangan</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container py-5" style="max-width: 850px;">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h2 class="fw-bold mb-1">
+                    🚀 Blast Undangan
+                </h2>
+
+                <small class="text-muted">
+                    Generate link undangan dan kirim ke WhatsApp / Telegram
+                </small>
+            </div>
+
+            <span class="badge bg-primary">
+                v1.0
+            </span>
+
+        </div>
+
+        <!-- Pengaturan -->
+        <div class="card shadow-sm mb-4">
+        
+            <div class="card-header">
+                ⚙ Pengaturan
+            </div>
+        
+            <div class="card-body">
+        
+                <label class="form-label">Link Undangan</label>
+        
+                <div class="input-group">
+        
+                    <span class="input-group-text">
+                        <i class="bi bi-link-45deg"></i>
+                    </span>
+        
+                    <input type="text" class="form-control" id="domain" placeholder="https://undanganku.com" value="https://undangan-digital-amber.vercel.app/">
+        
+                </div>
+        
+            </div>
+        
+        </div>
+
+        <!-- Data Tamu -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+                👤 Data Tamu
+            </div>
+
+            <div class="card-body">
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Nama Tamu
+                    </label>
+
+                    <input type="text" class="form-control" id="guestName" placeholder="Contoh : Bapak Ahmad">
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Nomor WhatsApp
+                    </label>
+
+                    <input type="text" class="form-control" id="phone" placeholder="628xxxxxxxxxx">
+
+                </div>
+
+                <div>
+
+                    <label class="form-label">
+                        Username Telegram (Opsional)
+                    </label>
+
+                    <input type="text" class="form-control" id="telegram" placeholder="@username">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card shadow-sm mb-4">
+        
+            <div class="card-header">
+                📂 Import Excel / CSV
+            </div>
+        
+            <div class="card-body">
+        
+                <input type="file" class="form-control" id="excelFile" accept=".xlsx,.xls,.csv">
+        
+            </div>
+        
+        </div>
+
+        <!-- Template -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+                💬 Template Pesan
+            </div>
+
+            <div class="card-body">
+
+                <textarea id="template" class="form-control" rows="8" placeholder="Halo Bapak/Ibu {nama},
+
+                    Kami mengundang Bapak/Ibu...
+
+                    {link}">
+                </textarea>
+
+            </div>
+
+        </div>
+
+        <!-- Preview -->
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                👀 Preview
+            </div>
+
+            <div class="card-body">
+
+                <div id="preview" class="preview-box">
+
+                    Preview pesan akan muncul di sini...
+
+                </div>
+
+                <hr>
+
+                <div class="d-grid gap-2">
+
+                    <button class="btn btn-secondary" id="copyMessage">
+                        <i class="bi bi-clipboard"></i>
+                        Copy Pesan
+                    </button>
+
+                    <button class="btn btn-outline-secondary" id="copyLink">
+                        <i class="bi bi-link-45deg"></i>
+                        Copy Link
+                    </button>
+
+                    <button class="btn btn-success" id="sendWA">
+                        <i class="bi bi-whatsapp"></i>
+                        Buka WhatsApp
+                    </button>
+
+                    <button class="btn btn-primary" id="sendTelegram">
+                        <i class="bi bi-telegram"></i>
+                        Buka Telegram
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card shadow-sm mt-4">
+        
+            <div class="card-header d-flex justify-content-between">
+            
+                <span>👥 Daftar Tamu</span>
+            
+                <span class="badge bg-primary" id="guestCount">
+                    0
+                </span>
+            
+            </div>
+        
+            <div class="card-body p-0">
+        
+                <div class="table-responsive">
+        
+                    <table class="table table-hover mb-0">
+        
+                        <thead class="table-light">
+                        
+                            <tr>
+                        
+                                <th width="40">#</th>
+                                <th>Nama</th>
+                                <th>WhatsApp</th>
+                                <th>Status</th>
+                                <th width="170">Aksi</th>
+                        
+                            </tr>
+                        
+                        </thead>
+        
+                        <tbody id="guestTable">
+        
+                            <tr>
+        
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    Belum ada data
+                                </td>
+        
+                            </tr>
+        
+                        </tbody>
+        
+                    </table>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/excel.js"></script>
+    <script src="js/whatsapp.js"></script>
+    <script src="js/telegram.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
