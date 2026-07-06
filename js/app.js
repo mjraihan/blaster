@@ -1,14 +1,19 @@
-const defaultTemplate = `Halo Bapak/Ibu {nama},
+const defaultTemplate = `_Assalamualaikum Warahmatullahi Wabarakatuh_
 
-Dengan penuh rasa syukur kami mengundang Bapak/Ibu untuk menghadiri acara kami.
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i *{nama}* untuk menghadiri acara kami.
 
-Silakan buka undangan melalui tautan berikut:
+*Berikut link undangan kami*, untuk info lengkap dari acara bisa kunjungi:
 
 {link}
 
-Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu berkenan hadir.
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
 
-Terima kasih.`;
+*Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.*
+
+Terima kasih banyak atas perhatiannya.
+
+Salam Hormat
+Raihan & Mela`;
 
 $(document).ready(function () {
 
